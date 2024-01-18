@@ -66,6 +66,22 @@ class MatrixOperations
     }
 
     
+public static int[,] TransposeMatrix(int[,] matrix)
+{
+    int rows = matrix.GetLength(0);
+    int cols = matrix.GetLength(1);
+    int[,] result = new int[cols, rows];
+
+    for (int i = 0; i < cols; i++)
+    {
+        for (int j = 0; j < rows; j++)
+        {
+            result[i, j] = matrix[j, i];
+        }
+    }
+
+    return result;
+}
     public static void PrintMatrix(int[,] matrix)
     {
         int rows = matrix.GetLength(0);
@@ -104,5 +120,13 @@ class MatrixOperations
         int[,] product = MultiplyMatrices(matrixA, matrixB);
         Console.WriteLine("Product of A and B:");
         PrintMatrix(product);
+
+        int[,] transposeA = TransposeMatrix(matrixA);
+        Console.WriteLine("Transpose of A:");
+        PrintMatrix(transposeA);
+
+        int[,] transposeB = TransposeMatrix(matrixB);
+        Console.WriteLine("Transpose of B:");
+        PrintMatrix(transposeB);
     }
 }
